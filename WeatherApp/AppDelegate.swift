@@ -7,15 +7,34 @@
 //
 
 import UIKit
+import CoreLocation
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
 
     var window: UIWindow?
+    
+    var locationManager : CLLocationManager = CLLocationManager()
+    
+    var currentLocation : CLLocation?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        
+        locationManager.startMonitoringSignificantLocationChanges()
+        
+        let navigator = self.window!.rootViewController! as! UITabBarController
+        
+        for view in navigator.viewControllers! {
+            if var subView = view as? LocationDataDelegate {
+                subView.currentLocation = self.currentLocation
+            }
+        }
+        
+        
         return true
     }
 
@@ -40,7 +59,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        if let latest: CLLocation = locations.last {
+            self.currentLocation = latest
+            
+            NSLog("Found location lat: %.2f lon: %.2f", latest.coordinate.latitude, latest.coordinate.longitude)
+            
+        }
+    }
+    
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case CLAuthorizationStatus.authorizedWhenInUse, CLAuthorizationStatus.authorizedAlways:
+            NSLog("Has permission")
+            manager.startMonitoringSignificantLocationChanges()
+        default:
+            NSLog("No permission")
+        }
+    }
 
 }
 
