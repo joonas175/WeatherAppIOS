@@ -9,7 +9,9 @@
 import Foundation
 import UIKit
 
-class ForecastView: UIViewController {
+class ForecastView: UIViewController, LocationDataDelecate {
+    var locationData: LocationDataModel?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

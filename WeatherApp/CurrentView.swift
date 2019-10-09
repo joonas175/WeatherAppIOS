@@ -10,10 +10,10 @@ import Foundation
 import UIKit
 import CoreLocation
 
-class CurrentView: UIViewController, LocationDataDelegate {
-    var currentLocation: CLLocation?
+class CurrentView: UIViewController, LocationDataDelecate {
+    var locationData: LocationDataModel?
     
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.

@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     var locationManager : CLLocationManager = CLLocationManager()
     
-    var currentLocation : CLLocation?
+    var locationData : LocationDataModel?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -24,16 +24,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         
-        locationManager.startMonitoringSignificantLocationChanges()
+        self.locationData = LocationDataModel()
         
         let navigator = self.window!.rootViewController! as! UITabBarController
         
         for view in navigator.viewControllers! {
-            if var subView = view as? LocationDataDelegate {
-                subView.currentLocation = self.currentLocation
+            if var subView = view as? LocationDataDelecate {
+                subView.locationData = self.locationData
+                self.locationData!.listeners.append(subView)
             }
         }
-        
+        locationManager.startMonitoringSignificantLocationChanges()
         
         return true
     }
@@ -54,6 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
@@ -63,7 +65,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         if let latest: CLLocation = locations.last {
-            self.currentLocation = latest
+            self.locationData!.currentLocation = latest
             
             NSLog("Found location lat: %.2f lon: %.2f", latest.coordinate.latitude, latest.coordinate.longitude)
             

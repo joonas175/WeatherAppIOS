@@ -10,10 +10,17 @@ import Foundation
 import UIKit
 import CoreLocation
 
-class CityView: UIViewController, LocationDataDelegate {
-    var currentLocation: CLLocation?
+class CityView: UIViewController, LocationDataDelecate {
     
-
+    func onLocationDataChanged() {
+        return
+    }
+    
+    func onSelectedLocationChanged() {
+        return
+    }
+    
+    var locationData: LocationDataModel?
     
     
     override func viewDidLoad() {
