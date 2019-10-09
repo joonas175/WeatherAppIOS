@@ -29,11 +29,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         let navigator = self.window!.rootViewController! as! UITabBarController
         
         for view in navigator.viewControllers! {
+            NSLog("Should loop?")
             if var subView = view as? LocationDataDelecate {
+                NSLog("Should add subview")
                 subView.locationData = self.locationData
                 self.locationData!.listeners.append(subView)
             }
         }
+        NSLog("Listenerit %d", self.locationData!.listeners.count)
         locationManager.startMonitoringSignificantLocationChanges()
         
         return true

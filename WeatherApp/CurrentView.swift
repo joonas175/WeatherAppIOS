@@ -13,6 +13,13 @@ import CoreLocation
 class CurrentView: UIViewController, LocationDataDelecate {
     var locationData: LocationDataModel?
     
+    func onLocationDataChanged() {
+        return
+    }
+    
+    func onSelectedLocationChanged() {
+        return
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

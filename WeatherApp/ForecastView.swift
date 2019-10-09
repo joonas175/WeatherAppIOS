@@ -12,6 +12,13 @@ import UIKit
 class ForecastView: UIViewController, LocationDataDelecate {
     var locationData: LocationDataModel?
     
+    func onLocationDataChanged() {
+        return
+    }
+    
+    func onSelectedLocationChanged() {
+        return
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -18,7 +18,6 @@ class LocationDataModel {
             self._currentLocation = newValue
             for listener in listeners {
                 listener.onLocationDataChanged()
-                NSLog("Toimiiko?")
             }
         }
     }
