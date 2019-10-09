@@ -13,7 +13,7 @@
         <!--City-->
         <scene sceneID="E5l-Mt-jbQ">
             <objects>
-                <viewController id="Abv-lG-PrJ" userLabel="City" sceneMemberID="viewController">
+                <viewController id="Abv-lG-PrJ" userLabel="City" customClass="CityView" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5Dj-R0-nRO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -29,7 +29,7 @@
         <!--Forecast-->
         <scene sceneID="zsa-XN-zxA">
             <objects>
-                <viewController id="mtb-fP-wtQ" userLabel="Forecast" sceneMemberID="viewController">
+                <viewController id="mtb-fP-wtQ" userLabel="Forecast" customClass="ForecastView" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="u48-sA-q8n">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -45,7 +45,7 @@
         <!--Current-->
         <scene sceneID="0bN-bC-f6E">
             <objects>
-                <viewController id="1ZR-Zp-RA1" userLabel="Current" sceneMemberID="viewController">
+                <viewController id="1ZR-Zp-RA1" userLabel="Current" customClass="CurrentView" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HlZ-DC-d9W">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

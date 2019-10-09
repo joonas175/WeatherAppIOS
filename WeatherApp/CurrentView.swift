@@ -14,7 +14,7 @@ class CurrentView: UIViewController, LocationDataDelecate {
     var locationData: LocationDataModel?
     
     func onLocationDataChanged() {
-        return
+        NSLog("Äijä liikkuu")
     }
     
     func onSelectedLocationChanged() {
