@@ -12,14 +12,6 @@ import CoreLocation
 
 class CityView: UIViewController, LocationDataDelecate {
     
-    func onLocationDataChanged() {
-        return
-    }
-    
-    func onSelectedLocationChanged() {
-        return
-    }
-    
     var locationData: LocationDataModel?
     
     

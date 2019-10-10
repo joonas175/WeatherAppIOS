@@ -26,7 +26,7 @@ class CurrentView: UIViewController, LocationDataDelecate {
         
         //let task = session.dataTask(with: url!, completionHandler: doneFetching) //kaatuu?
         
-        task.resume()
+        //task.resume()
     }
     
     func doneFetching(data: Data?, response: URLResponse?, error: Error?){
