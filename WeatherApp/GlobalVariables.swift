@@ -8,5 +8,5 @@
 
 import Foundation
 class GlobalVariables {
-    var OWMkey : String = "API KEY HERE"
+    static var OWMkey : String = "API KEY HERE"
 }
