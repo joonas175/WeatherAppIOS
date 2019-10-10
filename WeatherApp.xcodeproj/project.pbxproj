@@ -29,6 +29,7 @@
 		71BB0869234CCABB00940022 /* 13d.png in Resources */ = {isa = PBXBuildFile; fileRef = 71BB085D234CCABB00940022 /* 13d.png */; };
 		71BB086A234CCABB00940022 /* 50d.png in Resources */ = {isa = PBXBuildFile; fileRef = 71BB085E234CCABB00940022 /* 50d.png */; };
 		71BB086B234CCABB00940022 /* 09d.png in Resources */ = {isa = PBXBuildFile; fileRef = 71BB085F234CCABB00940022 /* 09d.png */; };
+		71D0A20F234F18B80087ABD9 /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D0A20E234F18B80087ABD9 /* GlobalVariables.swift */; };
 		71E9E6D8234E044E001548AE /* LocationDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E9E6D7234E044E001548AE /* LocationDataModel.swift */; };
 		71E9E6DA234E0598001548AE /* LocationDataDelecate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E9E6D9234E0598001548AE /* LocationDataDelecate.swift */; };
 /* End PBXBuildFile section */
@@ -79,6 +80,7 @@
 		71BB085D234CCABB00940022 /* 13d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 13d.png; sourceTree = "<group>"; };
 		71BB085E234CCABB00940022 /* 50d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 50d.png; sourceTree = "<group>"; };
 		71BB085F234CCABB00940022 /* 09d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 09d.png; sourceTree = "<group>"; };
+		71D0A20E234F18B80087ABD9 /* GlobalVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
 		71E9E6D7234E044E001548AE /* LocationDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDataModel.swift; sourceTree = "<group>"; };
 		71E9E6D9234E0598001548AE /* LocationDataDelecate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDataDelecate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -139,6 +141,7 @@
 				71BB0823234CC20700940022 /* Main.storyboard */,
 				71BB0851234CC80C00940022 /* CityView.swift */,
 				71BB084D234CC74900940022 /* CurrentView.swift */,
+				71D0A20E234F18B80087ABD9 /* GlobalVariables.swift */,
 				71BB084F234CC78600940022 /* ForecastView.swift */,
 				71BB0826234CC20B00940022 /* Assets.xcassets */,
 				71BB0828234CC20B00940022 /* LaunchScreen.storyboard */,
@@ -329,6 +332,7 @@
 			files = (
 				71E9E6D8234E044E001548AE /* LocationDataModel.swift in Sources */,
 				71BB0822234CC20700940022 /* ViewController.swift in Sources */,
+				71D0A20F234F18B80087ABD9 /* GlobalVariables.swift in Sources */,
 				71BB0852234CC80C00940022 /* CityView.swift in Sources */,
 				71BB084E234CC74900940022 /* CurrentView.swift in Sources */,
 				71BB0820234CC20700940022 /* AppDelegate.swift in Sources */,

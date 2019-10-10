@@ -13,3 +13,13 @@ protocol LocationDataDelecate {
     func onLocationDataChanged() -> Void
     func onSelectedLocationChanged() -> Void
 }
+
+extension LocationDataDelecate {
+    func onLocationDataChanged() {
+        
+    }
+    
+    func onSelectedLocationChanged() {
+        
+    }
+}
