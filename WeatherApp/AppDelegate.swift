@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         locationManager.delegate = self
+        locationManager.distanceFilter = 1000
         locationManager.requestWhenInUseAuthorization()
         
         self.locationData = LocationDataModel()
@@ -34,7 +35,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                 self.locationData!.listeners.append(subView)
             }
         }
-        locationManager.startMonitoringSignificantLocationChanges()
+        
+        locationManager.startUpdatingLocation()
         
         return true
     }
@@ -73,7 +75,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
         case CLAuthorizationStatus.authorizedWhenInUse, CLAuthorizationStatus.authorizedAlways:
-            manager.startMonitoringSignificantLocationChanges()
+            manager.startUpdatingLocation()
         default:
             NSLog("No permission")
         }

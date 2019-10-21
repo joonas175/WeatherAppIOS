@@ -88,7 +88,13 @@ class ForecastView: UITableViewController, LocationDataDelecate {
                     }
                     newForecasts.append(newEntry)
                 }
-                self.forecasts = newForecasts
+                
+                DispatchQueue.main.async {
+                    self.forecasts = newForecasts
+                    
+                    self.tableView.reloadData()
+                }
+                
             }
         } catch {
             print("Failed to parse json")
