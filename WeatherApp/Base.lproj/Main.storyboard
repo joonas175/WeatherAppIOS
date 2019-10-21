@@ -83,6 +83,11 @@
                         <viewLayoutGuide key="safeArea" id="iXs-Wg-NaJ"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Current" id="3ki-yW-ELf"/>
+                    <connections>
+                        <outlet property="cityLabel" destination="z8F-Ji-Spf" id="dTM-lR-QLq"/>
+                        <outlet property="icon" destination="6dS-Cn-XPK" id="rog-YA-Jbk"/>
+                        <outlet property="temp" destination="YpP-XB-PiA" id="sBU-JO-LbA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L5q-Mn-Epz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

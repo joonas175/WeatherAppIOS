@@ -30,12 +30,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         for view in navigator.viewControllers! {
             if var subView = view as? LocationDataDelecate {
-                NSLog("Should add subview")
                 subView.locationData = self.locationData
                 self.locationData!.listeners.append(subView)
             }
         }
-        NSLog("Listenerit %d", self.locationData!.listeners.count)
         locationManager.startMonitoringSignificantLocationChanges()
         
         return true
@@ -68,9 +66,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         if let latest: CLLocation = locations.last {
             self.locationData!.currentLocation = latest
-            
-            NSLog("Found location lat: %.2f lon: %.2f", latest.coordinate.latitude, latest.coordinate.longitude)
-            
         }
     }
     
@@ -78,7 +73,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
         case CLAuthorizationStatus.authorizedWhenInUse, CLAuthorizationStatus.authorizedAlways:
-            NSLog("Has permission")
             manager.startMonitoringSignificantLocationChanges()
         default:
             NSLog("No permission")
