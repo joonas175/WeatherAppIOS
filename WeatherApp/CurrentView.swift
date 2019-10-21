@@ -35,6 +35,7 @@ class CurrentView: UIViewController, LocationDataDelecate {
     func doneFetching(data: Data?, response: URLResponse?, error: Error?){
         if let fail : Error = error {
             NSLog("Request failed with following error: %@", fail.localizedDescription)
+            return
         }
         
         do {
@@ -60,7 +61,6 @@ class CurrentView: UIViewController, LocationDataDelecate {
             
             if let main : [String: Any] = jsonObject["main"] as? [String: Any] {
                 if let temp : Double = main["temp"] as? Double {
-                    print(temp)
                     DispatchQueue.main.async(execute: {
                         self.temp.text = String(format: "%.1f °C", arguments: [temp])
                     })
