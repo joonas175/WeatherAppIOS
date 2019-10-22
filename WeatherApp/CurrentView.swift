@@ -17,11 +17,14 @@ class CurrentView: UIViewController, LocationDataDelecate {
     @IBOutlet weak var temp: UILabel!
     
     func onLocationDataChanged() {
+        print("location changed")
         let config = URLSessionConfiguration.default
         
         let session = URLSession(configuration: config)
         
-        let coordinate = self.locationData!.currentLocation!.coordinate
+        let locDataObj = self.locationData!
+        
+        let coordinate = locDataObj.useSelectedLocation ? locDataObj.selectedLocation!.coordinate : locDataObj.currentLocation!.coordinate
         
         let url : URL? = URL(string: String(format: "http://api.openweathermap.org/data/2.5/weather?lat=%.6f&lon=%.6f&APPID=%@&units=metric", coordinate.latitude, coordinate.longitude, GlobalVariables.OWMkey))
         
@@ -30,6 +33,10 @@ class CurrentView: UIViewController, LocationDataDelecate {
         let task = session.dataTask(with: url!, completionHandler: doneFetching)
         
         task.resume()
+    }
+    
+    func onSelectedLocationChanged() {
+        self.onLocationDataChanged()
     }
     
     func doneFetching(data: Data?, response: URLResponse?, error: Error?){

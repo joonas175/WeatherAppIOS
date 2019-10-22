@@ -43,9 +43,20 @@ class CityView: UIViewController, LocationDataDelecate, UITableViewDelegate, UIT
             cell.cityLabel.text = "GPS: " + (locationData?.currentLocationName ?? "Unknown")
         } else {
             cell.cityLabel.text = cities[indexPath.row - 1].name!
+            
         }
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if(indexPath.row == 0){
+            self.locationData!.useSelectedLocation = false
+        } else {
+            print("using selected location")
+            self.locationData!.useSelectedLocation = true
+            self.locationData!.selectedLocation = cities[indexPath.row - 1].location!
+        }
     }
     
     @IBAction func addCity(_ sender: Any) {

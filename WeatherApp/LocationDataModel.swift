@@ -22,7 +22,18 @@ class LocationDataModel {
         }
     }
     var currentLocationName: String?
-    var selectedLocation : CLLocation?
-    var useSelectedLocation: Bool?
+    var _selectedLocation : CLLocation?
+    var selectedLocation : CLLocation? {
+        get {
+            return self._selectedLocation
+        }
+        set {
+            self._selectedLocation = newValue
+            for listener in listeners {
+                listener.onLocationDataChanged()
+            }
+        }
+    }
+    var useSelectedLocation: Bool = false
     var listeners : [LocationDataDelecate] = []
 }
