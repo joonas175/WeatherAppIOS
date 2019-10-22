@@ -21,7 +21,8 @@ class LocationDataModel {
             }
         }
     }
+    var currentLocationName: String?
     var selectedLocation : CLLocation?
-    var selectedLocationName: String?
+    var useSelectedLocation: Bool?
     var listeners : [LocationDataDelecate] = []
 }

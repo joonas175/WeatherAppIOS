@@ -45,6 +45,7 @@ class CurrentView: UIViewController, LocationDataDelecate {
             if let city : String = jsonObject["name"] as? String {
                 DispatchQueue.main.async(execute: {
                     self.cityLabel.text = city
+                    self.locationData!.currentLocationName = city
                 })
             }
             

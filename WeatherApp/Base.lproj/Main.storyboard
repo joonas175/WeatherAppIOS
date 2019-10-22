@@ -17,20 +17,95 @@
                     <view key="view" contentMode="scaleToFill" id="5Dj-R0-nRO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LyY-Rd-trz">
+                                <rect key="frame" x="16" y="59.5" width="343" height="460.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cityCell" rowHeight="70" id="OVh-bq-eds" customClass="CityTableItem" customModule="WeatherApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="343" height="70"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OVh-bq-eds" id="T76-vl-wG4">
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="69.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nJR-18-Fou">
+                                                    <rect key="frame" x="15" y="11" width="263" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="nJR-18-Fou" firstAttribute="top" secondItem="T76-vl-wG4" secondAttribute="topMargin" id="UvL-Mk-GVb"/>
+                                                <constraint firstItem="nJR-18-Fou" firstAttribute="leading" secondItem="T76-vl-wG4" secondAttribute="leadingMargin" id="Xzq-ZK-5a9"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="nJR-18-Fou" secondAttribute="trailing" constant="50" id="o3J-7N-WBw"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <accessibility key="accessibilityConfiguration" identifier="cityCell"/>
+                                        <connections>
+                                            <outlet property="cityLabel" destination="nJR-18-Fou" id="HRy-Bn-FJT"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Abv-lG-PrJ" id="Tla-Fq-kue"/>
+                                    <outlet property="delegate" destination="Abv-lG-PrJ" id="WEf-1c-Cwf"/>
+                                </connections>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose city" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9cV-n2-3NC">
+                                <rect key="frame" x="16" y="20" width="343" height="31.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yvx-pY-0qj">
+                                <rect key="frame" x="16" y="538" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="esw-aq-LDG">
+                                <rect key="frame" x="16" y="576" width="343" height="30"/>
+                                <state key="normal" title="Add city"/>
+                                <connections>
+                                    <action selector="addCity:" destination="Abv-lG-PrJ" eventType="touchUpInside" id="7Nf-y0-lOs"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="5VO-7H-3mf" firstAttribute="trailing" secondItem="9cV-n2-3NC" secondAttribute="trailing" constant="16" id="2v5-Sk-g9q"/>
+                            <constraint firstItem="5VO-7H-3mf" firstAttribute="trailing" secondItem="yvx-pY-0qj" secondAttribute="trailing" constant="16" id="4A0-97-ZBg"/>
+                            <constraint firstItem="yvx-pY-0qj" firstAttribute="top" secondItem="LyY-Rd-trz" secondAttribute="bottom" constant="18" id="DGh-25-gQS"/>
+                            <constraint firstItem="9cV-n2-3NC" firstAttribute="leading" secondItem="5VO-7H-3mf" secondAttribute="leading" constant="16" id="HEc-Vm-EkQ"/>
+                            <constraint firstItem="LyY-Rd-trz" firstAttribute="top" secondItem="9cV-n2-3NC" secondAttribute="bottom" constant="8" id="K4P-3v-Qt2"/>
+                            <constraint firstItem="esw-aq-LDG" firstAttribute="top" secondItem="yvx-pY-0qj" secondAttribute="bottom" constant="8" id="LYr-iQ-Bhf"/>
+                            <constraint firstItem="5VO-7H-3mf" firstAttribute="trailing" secondItem="esw-aq-LDG" secondAttribute="trailing" constant="16" id="M8a-gu-b6i"/>
+                            <constraint firstItem="LyY-Rd-trz" firstAttribute="leading" secondItem="5VO-7H-3mf" secondAttribute="leading" constant="16" id="PKB-VG-EGR"/>
+                            <constraint firstItem="5VO-7H-3mf" firstAttribute="bottom" secondItem="esw-aq-LDG" secondAttribute="bottom" constant="12" id="WN7-NH-vfI"/>
+                            <constraint firstItem="5VO-7H-3mf" firstAttribute="trailing" secondItem="LyY-Rd-trz" secondAttribute="trailing" constant="16" id="ns5-Hd-Vf1"/>
+                            <constraint firstItem="9cV-n2-3NC" firstAttribute="top" secondItem="5VO-7H-3mf" secondAttribute="top" id="ozP-gZ-VId"/>
+                            <constraint firstItem="esw-aq-LDG" firstAttribute="leading" secondItem="5VO-7H-3mf" secondAttribute="leading" constant="16" id="tog-Vl-WwM"/>
+                            <constraint firstItem="yvx-pY-0qj" firstAttribute="leading" secondItem="5VO-7H-3mf" secondAttribute="leading" constant="16" id="ueF-d0-LvF"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="5VO-7H-3mf"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="City" id="pPv-nJ-eIX"/>
+                    <connections>
+                        <outlet property="addCityField" destination="yvx-pY-0qj" id="Ihw-Cr-wWk"/>
+                        <outlet property="tableView" destination="LyY-Rd-trz" id="Sq4-Ko-NoU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TVd-IP-YFo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1079" y="279"/>
+            <point key="canvasLocation" x="-1079.2" y="278.41079460269867"/>
         </scene>
         <!--Forecast-->
         <scene sceneID="Q20-0K-Ael">
             <objects>
-                <tableViewController id="a96-0W-0Rt" userLabel="Forecast" customClass="ForecastView" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="x8v-gm-UeK">
+                <tableViewController clearsSelectionOnViewWillAppear="NO" id="a96-0W-0Rt" userLabel="Forecast" customClass="ForecastView" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="x8v-gm-UeK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
