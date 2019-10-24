@@ -9,7 +9,23 @@
 import Foundation
 import CoreLocation
 
-class CityModel {
+class CityModel: NSObject, NSCoding {
+    
     var name : String?
     var location: CLLocation?
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(name!, forKey: "cityName")
+        aCoder.encode(location!, forKey: "location")
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        self.location = aDecoder.decodeObject(forKey: "location") as! CLLocation
+        self.name = aDecoder.decodeObject(forKey: "cityName") as! String
+    }
+    
+    override init() {
+        
+    }
+
 }

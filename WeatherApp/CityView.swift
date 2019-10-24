@@ -24,10 +24,18 @@ class CityView: UIViewController, LocationDataDelecate, UITableViewDelegate, UIT
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        if let citiesData = UserDefaults.standard.data(forKey: "vittu") {
+            print("löyty")
+            do {
+                self.cities =  try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(citiesData) as! [CityModel]
+                tableView.reloadData()
+            } catch {
+                print("parse error")
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
         super.viewWillAppear(animated)
     }
     
@@ -47,6 +55,13 @@ class CityView: UIViewController, LocationDataDelecate, UITableViewDelegate, UIT
         }
         
         return cell
+    }
+    
+    func onLocationDataChanged() {
+        if let _ = self.tableView {
+            self.tableView.reloadData()
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -82,6 +97,14 @@ class CityView: UIViewController, LocationDataDelecate, UITableViewDelegate, UIT
         self.cities.append(newModel)
         
         tableView.reloadData()
+        
+        do {
+            let data = try NSKeyedArchiver.archivedData(withRootObject: self.cities, requiringSecureCoding: false)
+            UserDefaults.standard.set(data, forKey: "vittu")
+            //UserDefaults.standard.set(self.cities, forKey: "vittu")
+        } catch {
+            print("couldnt write to disk")
+        }
     }
     
 }
