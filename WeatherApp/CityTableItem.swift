@@ -12,5 +12,4 @@ import UIKit
 class CityTableItem: UITableViewCell {
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var removeBtn: UIButton!
-    
 }

@@ -20,8 +20,8 @@ class CityModel: NSObject, NSCoding {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        self.location = aDecoder.decodeObject(forKey: "location") as! CLLocation
-        self.name = aDecoder.decodeObject(forKey: "cityName") as! String
+        self.location = aDecoder.decodeObject(forKey: "location") as? CLLocation
+        self.name = aDecoder.decodeObject(forKey: "cityName") as? String
     }
     
     override init() {

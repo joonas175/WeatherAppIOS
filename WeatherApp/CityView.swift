@@ -18,13 +18,14 @@ class CityView: UIViewController, LocationDataDelecate, UITableViewDelegate, UIT
     @IBOutlet weak var tableView: UITableView!
     var cities : [CityModel] = []
     @IBOutlet weak var addCityField: UITextField!
+    var selectedCity : IndexPath?
     let geoCoder : CLGeocoder = CLGeocoder()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        if let citiesData = UserDefaults.standard.data(forKey: "vittu") {
+        if let citiesData = UserDefaults.standard.data(forKey: "cities") {
             print("löyty")
             do {
                 self.cities =  try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(citiesData) as! [CityModel]
@@ -36,7 +37,16 @@ class CityView: UIViewController, LocationDataDelecate, UITableViewDelegate, UIT
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        if let selected : IndexPath = selectedCity {
+            self.tableView.selectRow(at: selected, animated: false, scrollPosition: .none)
+            
+        }
         super.viewWillAppear(animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.selectedCity = self.tableView.indexPathForSelectedRow
+        super.viewWillDisappear(animated)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -49,9 +59,11 @@ class CityView: UIViewController, LocationDataDelecate, UITableViewDelegate, UIT
         
         if(indexPath.row == 0){
             cell.cityLabel.text = "GPS: " + (locationData?.currentLocationName ?? "Unknown")
+            cell.removeBtn.isHidden = true
         } else {
             cell.cityLabel.text = cities[indexPath.row - 1].name!
-            
+            cell.removeBtn.tag = indexPath.row
+            cell.removeBtn.addTarget(self, action: #selector(removeButtonPressed), for: .touchUpInside)
         }
         
         return cell
@@ -59,8 +71,12 @@ class CityView: UIViewController, LocationDataDelecate, UITableViewDelegate, UIT
     
     func onLocationDataChanged() {
         if let _ = self.tableView {
-            self.tableView.reloadData()
+            
         }
+        
+    }
+    
+    @objc func removeButtonPressed (sender:UIButton) {
         
     }
     
@@ -100,7 +116,7 @@ class CityView: UIViewController, LocationDataDelecate, UITableViewDelegate, UIT
         
         do {
             let data = try NSKeyedArchiver.archivedData(withRootObject: self.cities, requiringSecureCoding: false)
-            UserDefaults.standard.set(data, forKey: "vittu")
+            UserDefaults.standard.set(data, forKey: "cities")
             //UserDefaults.standard.set(self.cities, forKey: "vittu")
         } catch {
             print("couldnt write to disk")
