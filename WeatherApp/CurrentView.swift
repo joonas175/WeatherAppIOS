@@ -15,9 +15,11 @@ class CurrentView: UIViewController, LocationDataDelecate {
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var icon: UIImageView!
     @IBOutlet weak var temp: UILabel!
+    @IBOutlet weak var activityView: UIActivityIndicatorView!
     
     func onLocationDataChanged() {
         print("location changed")
+        self.activityView.startAnimating()
         let config = URLSessionConfiguration.default
         
         let session = URLSession(configuration: config)
@@ -71,11 +73,14 @@ class CurrentView: UIViewController, LocationDataDelecate {
                 if let temp : Double = main["temp"] as? Double {
                     DispatchQueue.main.async(execute: {
                         self.temp.text = String(format: "%.1f °C", arguments: [temp])
+                        self.activityView.stopAnimating()
                     })
                 } else {
                     print("Failed to parse temperature")
                 }
             }
+            
+            
             
             
             
@@ -91,6 +96,7 @@ class CurrentView: UIViewController, LocationDataDelecate {
 
 
     override func viewDidLoad() {
+        self.activityView.hidesWhenStopped = true
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }

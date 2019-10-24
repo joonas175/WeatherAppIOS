@@ -36,4 +36,10 @@ class LocationDataModel {
     }
     var useSelectedLocation: Bool = false
     var listeners : [LocationDataDelecate] = []
+    
+    func forceUpdate() {
+        for listener in listeners {
+            listener.onLocationDataChanged()
+        }
+    }
 }

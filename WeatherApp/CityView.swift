@@ -52,6 +52,7 @@ class CityView: UIViewController, LocationDataDelecate, UITableViewDelegate, UIT
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if(indexPath.row == 0){
             self.locationData!.useSelectedLocation = false
+            self.locationData!.forceUpdate()
         } else {
             print("using selected location")
             self.locationData!.useSelectedLocation = true

@@ -30,21 +30,31 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nJR-18-Fou">
-                                                    <rect key="frame" x="15" y="11" width="263" height="18"/>
+                                                    <rect key="frame" x="15" y="11" width="555" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aWh-0W-X6R">
+                                                    <rect key="frame" x="581" y="8" width="39" height="24"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                    <state key="normal" title="Remove">
+                                                        <color key="titleColor" red="1" green="0.046545039428554702" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                </button>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="aWh-0W-X6R" firstAttribute="top" secondItem="T76-vl-wG4" secondAttribute="top" constant="8" id="7lV-kh-aSc"/>
                                                 <constraint firstItem="nJR-18-Fou" firstAttribute="top" secondItem="T76-vl-wG4" secondAttribute="topMargin" id="UvL-Mk-GVb"/>
                                                 <constraint firstItem="nJR-18-Fou" firstAttribute="leading" secondItem="T76-vl-wG4" secondAttribute="leadingMargin" id="Xzq-ZK-5a9"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="nJR-18-Fou" secondAttribute="trailing" constant="50" id="o3J-7N-WBw"/>
+                                                <constraint firstAttribute="trailing" secondItem="aWh-0W-X6R" secondAttribute="trailing" constant="15" id="tze-4f-JdI"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <accessibility key="accessibilityConfiguration" identifier="cityCell"/>
                                         <connections>
                                             <outlet property="cityLabel" destination="nJR-18-Fou" id="HRy-Bn-FJT"/>
+                                            <outlet property="removeBtn" destination="aWh-0W-X6R" id="hik-mZ-cgw"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -194,6 +204,9 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="ls9-mI-NYC">
+                                <rect key="frame" x="177.5" y="212" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -203,6 +216,8 @@
                             <constraint firstItem="iXs-Wg-NaJ" firstAttribute="trailing" secondItem="YpP-XB-PiA" secondAttribute="trailing" constant="16" id="8ra-yQ-8tX"/>
                             <constraint firstItem="z8F-Ji-Spf" firstAttribute="leading" secondItem="iXs-Wg-NaJ" secondAttribute="leading" constant="16" id="IzN-wb-zua"/>
                             <constraint firstItem="iXs-Wg-NaJ" firstAttribute="trailing" secondItem="z8F-Ji-Spf" secondAttribute="trailing" constant="16" id="KfK-0j-8h7"/>
+                            <constraint firstItem="ls9-mI-NYC" firstAttribute="centerX" secondItem="iXs-Wg-NaJ" secondAttribute="centerX" id="SJJ-8e-OeD"/>
+                            <constraint firstItem="z8F-Ji-Spf" firstAttribute="top" secondItem="ls9-mI-NYC" secondAttribute="bottom" constant="8" id="dwA-7K-Unr"/>
                             <constraint firstItem="6dS-Cn-XPK" firstAttribute="centerY" secondItem="iXs-Wg-NaJ" secondAttribute="centerY" id="nOm-9O-SWI"/>
                             <constraint firstItem="YpP-XB-PiA" firstAttribute="top" secondItem="6dS-Cn-XPK" secondAttribute="bottom" constant="8" id="nwX-En-jqB"/>
                         </constraints>
@@ -210,6 +225,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Current" id="3ki-yW-ELf"/>
                     <connections>
+                        <outlet property="activityView" destination="ls9-mI-NYC" id="98F-lc-PLh"/>
                         <outlet property="cityLabel" destination="z8F-Ji-Spf" id="dTM-lR-QLq"/>
                         <outlet property="icon" destination="6dS-Cn-XPK" id="rog-YA-Jbk"/>
                         <outlet property="temp" destination="YpP-XB-PiA" id="sBU-JO-LbA"/>

@@ -48,13 +48,19 @@ class ForecastView: UITableViewController, LocationDataDelecate {
         
         let session = URLSession(configuration: config)
         
-        let coordinate = self.locationData!.currentLocation!.coordinate
+        let locDataObj = self.locationData!
+        
+        let coordinate = locDataObj.useSelectedLocation ? locDataObj.selectedLocation!.coordinate : locDataObj.currentLocation!.coordinate
         
         let url : URL? = URL(string: String(format: "http://api.openweathermap.org/data/2.5/forecast?lat=%.6f&lon=%.6f&APPID=%@&units=metric", coordinate.latitude, coordinate.longitude, GlobalVariables.OWMkey))
         
         let task = session.dataTask(with: url!, completionHandler: doneFetching)
         
         task.resume()
+    }
+    
+    func onSelectedLocationChanged() {
+        onLocationDataChanged()
     }
     
     func doneFetching(data: Data?, response: URLResponse?, error: Error?){
