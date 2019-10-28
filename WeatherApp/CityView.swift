@@ -62,7 +62,7 @@ class CityView: UIViewController, LocationDataDelecate, UITableViewDelegate, UIT
             cell.removeBtn.isHidden = true
         } else {
             cell.cityLabel.text = cities[indexPath.row - 1].name!
-            cell.removeBtn.tag = indexPath.row
+            cell.removeBtn.tag = indexPath.row - 1
             cell.removeBtn.addTarget(self, action: #selector(removeButtonPressed), for: .touchUpInside)
         }
         
@@ -77,7 +77,8 @@ class CityView: UIViewController, LocationDataDelecate, UITableViewDelegate, UIT
     }
     
     @objc func removeButtonPressed (sender:UIButton) {
-        
+        cities.remove(at: sender.tag)
+        tableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
