@@ -1,6 +1,9 @@
 # WeatherAppIOS
 My weather app for a school course (Mobile Programming 2)
+
 Made in Swift language
+
+Screencast: https://youtu.be/A-KX-7Y18W0
 
 # Features
 - Weather Information
