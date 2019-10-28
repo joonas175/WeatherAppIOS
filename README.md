@@ -12,6 +12,10 @@ Made in Swift language
   - Your own location
     - Add and remove to a list, which is saved in storage
     - Geocoded from given string
+- UI
+  - Tab navigation
+  - 2 TableViews
+  - ActivityIndicator on current weather screen :O
     
 # To be implemented
 - UI state saving
