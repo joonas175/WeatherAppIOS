@@ -12,3 +12,8 @@ Made in Swift language
   - Your own location
     - Add and remove to a list, which is saved in storage
     - Geocoded from given string
+    
+# To be implemented
+- UI state saving
+- Response caching
+- Overall polishing
